@@ -1,6 +1,6 @@
 # RFC 0003: Minimal RFC lifecycle
 
-- Status: Draft
+- Status: Accepted
 - Authors: github:uthunderbird
 - Created: 2026-09-03
 - Pull request: https://github.com/uthunderbird/agent-transcripts/pull/1
@@ -110,4 +110,17 @@ finding disposition was required.
 
 ## Decision
 
-Pending.
+- Authority: `github:uthunderbird`
+- Date: 2026-09-03
+- Decision URL: https://github.com/uthunderbird/agent-transcripts/pull/1#issuecomment-5524925298
+- Outcome: Accepted
+- Exact base: `0ba1d535e78e7485389bc4eb04c5614966f6fc89`
+- Exact candidate: `0d068d51f422b852b2926105a25ee8a8aa26be0b`
+- Normative files: `rfcs/README.md`, `rfcs/0000-template.md`
+- Unresolved P0/P1: none
+- Reason: the candidate establishes the required exact-change lifecycle while
+  leaving compatibility, supersession, and enforcement machinery to the RFCs
+  that actually need them.
+
+This status records the decision but becomes effective only when the complete
+reviewed bundle and these review/decision records land on `main`.
