@@ -128,7 +128,7 @@ in RFC 0004.
 
 - Withdrawing author: `github:uthunderbird`
 - Date: 2026-09-03
-- URL: pending publication of this historical record
+- URL: https://github.com/uthunderbird/agent-transcripts/commit/9862378dcec7625dbce7ad6adb40eb8282d42c54
 - Reason: the final permitted review left `FINAL-P1-1` unresolved. RFC 0005
   replaces the proposal with explicit Unicode-version binding.
 

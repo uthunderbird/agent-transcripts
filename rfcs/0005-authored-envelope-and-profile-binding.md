@@ -1,12 +1,12 @@
 # RFC 0005: Authored envelope and profile binding
 
-- Status: Draft
+- Status: Withdrawn
 - Authors: github:uthunderbird
 - Created: 2026-09-03
-- Pull request: —
-- Reviewed base: —
-- Reviewed candidate: —
-- Local review: 0/5 qualifying rounds; 4 preliminary cold critiques
+- Pull request: https://github.com/uthunderbird/agent-transcripts/pull/2
+- Reviewed base: 931230659986128da600dbc389225c23e5339210
+- Reviewed candidate: 9862378dcec7625dbce7ad6adb40eb8282d42c54
+- Local review: 0/5 qualifying rounds; 5 cold critiques
 
 ## Summary
 
@@ -102,9 +102,19 @@ trees and therefore do not qualify as commit-bound lifecycle rounds:
 4. Coverage review returned zero P0/P1 across the complete authored-layer scope
    and all preceding repairs.
 
-The fifth and last local-polish iteration must review an exact committed
-base/candidate pair. It will be the first qualifying round under RFC 0003.
+5. The final regression found no technical P0/P1, but found two lifecycle P1s:
+   `PRE-5-P1-1` the pull request was opened after rather than before review, so
+   the round could not qualify; `PRE-5-P1-2` RFC 0004's withdrawal record used a
+   placeholder instead of the URL required by RFC 0003. The local-polish budget
+   was exhausted, so RFC 0005 was not revised or accepted.
 
 ## Decision
 
-Pending.
+- Withdrawing author: `github:uthunderbird`
+- Date: 2026-09-03
+- URL: https://github.com/uthunderbird/agent-transcripts/pull/2#issuecomment-5525296313
+- Reason: the fifth local-polish iteration left the two lifecycle P1s above
+  unresolved. The technically reviewed content may be proposed again only in a
+  fresh RFC whose complete Draft PR exists before its qualifying review.
+
+RFC 0005 made no normative change.
