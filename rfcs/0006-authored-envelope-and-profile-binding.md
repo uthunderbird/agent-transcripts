@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: github:uthunderbird
 - Created: 2026-09-03
-- Pull request: —
+- Pull request: https://github.com/uthunderbird/agent-transcripts/pull/3
 - Reviewed base: —
 - Reviewed candidate: —
 - Local review: 0/5 rounds
