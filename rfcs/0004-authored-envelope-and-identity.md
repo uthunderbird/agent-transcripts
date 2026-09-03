@@ -1,12 +1,12 @@
 # RFC 0004: Authored envelope and profile binding
 
-- Status: Draft
+- Status: Withdrawn
 - Authors: github:uthunderbird
 - Created: 2026-09-03
 - Pull request: —
-- Reviewed base: —
-- Reviewed candidate: —
-- Local review: 0/5 qualifying rounds; 4 preliminary cold critiques
+- Reviewed base: 931230659986128da600dbc389225c23e5339210
+- Reviewed candidate: 0aceeccdced2c5d11feb168e054ce8cbddae5f71
+- Local review: 1/5 qualifying rounds; 4 preliminary cold critiques
 
 ## Summary
 
@@ -116,9 +116,20 @@ trees. They are preliminary evidence rather than commit-bound lifecycle rounds:
 4. Coverage review returned zero P0/P1 across the narrowed authored-envelope,
    profile-binding, modality, and identity scope.
 
-The fifth and last local-polish iteration must review an exact committed
-base/candidate pair. It is the first round that can qualify under RFC 0003.
+The fifth and last local-polish iteration reviewed
+`931230659986128da600dbc389225c23e5339210..0aceeccdced2c5d11feb168e054ce8cbddae5f71`.
+Relationship: non-independent cold review. Verdict: zero P0 and one unresolved
+P1, `FINAL-P1-1`: NFC validity depended on the implementation's Unicode data
+version. Python Unicode 16 and Node Unicode 17 disagreed on a string containing
+U+1ACF. With the five-iteration budget exhausted, the finding was not repaired
+in RFC 0004.
 
 ## Decision
 
-Pending.
+- Withdrawing author: `github:uthunderbird`
+- Date: 2026-09-03
+- URL: pending publication of this historical record
+- Reason: the final permitted review left `FINAL-P1-1` unresolved. RFC 0005
+  replaces the proposal with explicit Unicode-version binding.
+
+RFC 0004 made no normative change.

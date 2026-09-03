@@ -28,10 +28,11 @@ The specification separates three claims:
 
 - **core-valid**: the file satisfies the byte, Markdown-envelope, block, and
   identity rules in this document;
-- **profile-valid**: it is core-valid and every profile-owned value satisfies
-  the exact profile contract named by the scenario;
-- **compilable**: it is profile-valid and a compiler supports the named format
-  version, profile contract, and every referenced registry entry.
+- **profile-valid**: it is core-valid, the registered profile triple explicitly
+  supports the scenario's exact `format_version`, and every profile-owned value
+  satisfies that contract's interpretation for that version;
+- **compilable**: it is profile-valid and a compiler supports the exact
+  `(format_version, profile triple)` pair and every referenced registry entry.
 
 Core validity alone never implies that a scenario can run or be scored. A tool
 must state which level it established and must fail closed when it cannot load
@@ -53,18 +54,28 @@ the declared version; a later specification must not reinterpret earlier files.
 
 ## 4. Source bytes and authored digest
 
-A `draft-1` source file must:
+`draft-1` fixes Unicode semantics to Unicode 15.1.0. A `draft-1` source file
+must:
 
 - be UTF-8 without a byte-order mark;
 - use LF line endings;
 - contain no NUL byte;
 - encode all text in Unicode Normalization Form C;
+- contain only scalar values assigned in Unicode 15.1.0;
 - end with exactly one LF.
 
-The NFC check above applies to the Unicode scalar sequence obtained by decoding
-the complete source as UTF-8. Independently, every JSON member name and string
-value, after JSON escape decoding, must contain only Unicode scalar values (no
-unpaired surrogate) and must itself be NFC.
+The assignment and NFC checks use the Unicode 15.1.0 Character Database and
+Normalization Forms in Unicode Standard Annex #15 for that version. Here,
+**assigned** means that the scalar's `General_Category` in Unicode 15.1.0 is not
+`Cn`. Noncharacters such as U+FDD0 therefore fail this predicate. The checks
+apply to the Unicode scalar sequence obtained by decoding the complete source
+as UTF-8. Independently, every JSON member name and string value, after JSON
+escape decoding, must contain only scalars satisfying the same predicate and
+must itself be NFC under the same data. Unpaired surrogate escapes are errors.
+
+Consequently, both a literal U+FDD0 and `\uFDD0` are errors. U+1ACF is also an
+error because it was unassigned in Unicode 15.1.0, regardless of its assignment
+or combining behavior in a later Unicode version.
 
 `authored_sha256` is lowercase hexadecimal SHA-256 of the complete source bytes.
 It is computed externally and is not stored inside the source. Every byte,
@@ -95,7 +106,9 @@ comment body may not contain `--`.
 
 The JSON value follows RFC 8259 with these additional rules:
 
-- duplicate object member names are errors;
+- duplicate object member names are errors; equality is tested after JSON
+  escape and surrogate-pair decoding by exact Unicode scalar sequence, so `a`
+  and `\u0061` are the same member name;
 - every number token must match `-?(0|[1-9][0-9]*)` and its value must be in
   `[-9007199254740991, 9007199254740991]`; fractions and exponents are errors
   even when their mathematical value is integral;
@@ -189,7 +202,8 @@ How a registered artifact is located is runner configuration, not authored
 input. A compiler must verify its bytes before interpreting any profile-owned
 value and must record the triple in any downstream binding.
 
-A profile contract must define, for the format versions it supports:
+A profile contract must enumerate the exact `format_version` strings it
+supports and define separately for each supported version:
 
 - closed schemas for `scenario.inputs` and each block kind's `value`;
 - speaker/stimulus extraction from visible Markdown, if used;
