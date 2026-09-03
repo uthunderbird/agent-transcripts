@@ -3,10 +3,10 @@
 - Status: Draft
 - Authors: github:uthunderbird
 - Created: 2026-09-03
-- Pull request: —
-- Reviewed base: —
-- Reviewed candidate: —
-- Local review: 0/5 qualifying rounds; 4 preliminary cold critiques
+- Pull request: https://github.com/uthunderbird/agent-transcripts/pull/1
+- Reviewed base: 0ba1d535e78e7485389bc4eb04c5614966f6fc89
+- Reviewed candidate: 0d068d51f422b852b2926105a25ee8a8aa26be0b
+- Local review: 1/5 qualifying rounds; 4 preliminary cold critiques
 
 ## Summary
 
@@ -96,9 +96,17 @@ design evidence rather than qualifying lifecycle rounds:
 4. Coverage review returned zero P0/P1 across the lifecycle states and stated
    manual guarantee.
 
-One final cold review must examine an exact committed base/candidate pair. It
-is the fifth and last local-polish iteration for this RFC and the first round
-that can qualify under the proposed lifecycle.
+The final cold review examined an exact committed base/candidate pair. It was
+the fifth and last local-polish iteration for this RFC and the first round that
+qualified under the proposed lifecycle.
+
+Qualifying round 1 reviewed
+`0ba1d535e78e7485389bc4eb04c5614966f6fc89..0d068d51f422b852b2926105a25ee8a8aa26be0b`.
+Relationship: non-independent cold review. Verdict: zero P0 and zero P1. The
+review verified the fixed authority, exact review/decision identity, finding
+dispositions, all lifecycle outcomes, record-only follow-ups, complete
+normative-tree landing predicate, bootstrap, and manual claim ceiling. No
+finding disposition was required.
 
 ## Decision
 
