@@ -1,50 +1,56 @@
 # RFC 0000: Title
 
 - Status: Draft
-- Authors: names or handles
+- Authors: github:login or local:name
 - Created: YYYY-MM-DD
-- Supersedes: —
-- Superseded by: —
+- Pull request: —
+- Reviewed base: —
+- Reviewed candidate: —
+- Local review: 0/5 rounds
 
 ## Summary
 
-What changes, in a few sentences?
+What changes?
 
 ## Problem
 
-What concrete authored scenario or ambiguity cannot the current specification
-represent or decide?
+What concrete ambiguity, defect, or missing capability exists?
 
 ## Proposed normative change
 
-Write the exact semantic or syntax change. Distinguish required behavior from
-illustrative examples.
+Describe the change and list every normative file changed in the same pull
+request. The prospective diff is part of the proposal.
 
 ## Examples
 
-Show at least one accepted example and, when relevant, one rejected or
-ambiguous example.
+Show the intended behavior and any important boundary case.
 
-## Compatibility
+## Consequences
 
-Which existing transcripts change meaning or become invalid? Does the format
-version change? How should old artifacts be recognized?
-
-## Core and profiles
-
-Does the change belong to the product-neutral core or to a named product
-profile? Why?
+State effects on existing artifacts, version meaning, implementations, and
+future tooling when applicable. This section does not authorize that tooling.
 
 ## Alternatives considered
 
 What simpler designs were considered, and why were they rejected?
 
-## Future tooling impact
+## Local review
 
-What would a future validator, compiler, runner, or adapter need to do? This
-section does not authorize implementing that tooling.
+For each of 1–5 cold rounds, record the reviewed base and candidate commits,
+verdict, review
+relationship, and a committed summary of each P0/P1: identifier, author,
+severity, disposition, actor, reason, and evidence. The final round must cover
+the exact Reviewed base and Reviewed candidate pair. Later
+review/decision-only commits are allowed; any other change requires another
+round within the cap.
 
 ## Decision
 
-Filled by the maintainer when the RFC leaves `Draft`. Record the outcome and the
-reason, including unresolved limitations.
+While Draft: `Pending`.
+
+For `Accepted` or `Rejected`, record the deciding authority, date, pull-request
+decision URL, outcome, exact base and candidate commits, normative files,
+unresolved P0/P1, and reason. An accepted RFC must have no unresolved P0/P1.
+
+For `Withdrawn`, record the withdrawing author, date, pull-request or commit
+URL, and reason. No authority decision or normative-file change is permitted.
