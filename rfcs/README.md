@@ -1,38 +1,61 @@
 # RFC process
 
-RFCs are the change mechanism for the Agent Transcripts format draft. They make
-the reason, compatibility cost, and rejected alternatives visible before the
-normative text changes.
+RFCs are the only route for changing the normative files of Agent Transcripts:
 
-## When an RFC is required
+- `SPEC.md` — transcript semantics;
+- `rfcs/README.md` — this change process;
+- `rfcs/0000-template.md` — the required RFC record.
 
-An RFC is required for any change that affects how an authored transcript is
-interpreted, including:
+The process is manual. It makes a proposal, review, decision, and effective
+change inspectable in Git and GitHub. It does not claim to prevent bypasses.
 
-- syntax, discriminators, fields, or defaults;
-- normative meaning or authority of a section;
-- versioning, identity, compatibility, or result separation;
-- the boundary between the generic core and a product profile;
-- requirements placed on a future validator, compiler, runner, or adapter.
+## Authority
 
-Spelling, formatting, broken-link, and explanatory changes that provably do not
-alter meaning do not require an RFC.
+The deciding authority is the fixed identity `github:uthunderbird`. Repository
+ownership or write access does not transfer that authority. Changing this rule
+itself requires an RFC decided by the authority named here.
 
 ## Lifecycle
 
-1. Copy `0000-template.md` to the next unused four-digit number and choose a
-   descriptive slug, for example `0001-outcome-semantics.md`.
-2. Open it as `Draft`. State the problem, proposed normative change, examples,
-   compatibility impact, and alternatives.
-3. Discuss it in a pull request. Revise the RFC rather than hiding decisions in
-   the review thread.
-4. A maintainer marks it `Accepted` or `Rejected` and records the decision.
-5. A normative accepted RFC and its corresponding `SPEC.md` change land
-   together. Only non-normative tooling described by the RFC may be deferred.
+1. Copy `0000-template.md` to the next unused four-digit number and open a pull
+   request containing the Draft RFC and its complete prospective normative
+   diff.
+2. Run between one and five cold review rounds. A round records the exact base
+   and candidate commits reviewed, its verdict, and a committed summary of every
+   P0/P1 finding and disposition. The prospective normative diff is
+   `git diff <base>..<candidate> -- <normative files>`, where base must be an
+   ancestor of candidate. Review by another instance of the same model is cold
+   but not independent.
+3. A P0/P1 is closed only when fixed with stated evidence, withdrawn by its
+   author with a reason, or explicitly overridden by the deciding authority
+   with a reason. An RFC with an unresolved P0/P1 cannot be accepted.
+4. The final round reviews an exact base/candidate pair. Later commits may
+   append only review and decision records or change RFC status. Any other
+   change invalidates that round and requires another round within the
+   five-round cap.
+5. The deciding authority records `Accepted` or `Rejected` in the pull request
+   for the same base/candidate pair reviewed by the final round. The RFC then
+   records that decision and its status without changing the reviewed proposal
+   or normative diff.
+6. Acceptance becomes effective only when the RFC, the exact reviewed
+   normative diff, and the review and decision records land together on
+   `main`. Immediately before landing, the contents of all normative files must
+   equal their contents at the reviewed base; after landing, they must equal
+   their contents at the reviewed candidate, including absence when either tree
+   deletes a path. A branch status, partial merge, or different result is not
+   effective.
 
-Allowed statuses are `Draft`, `Accepted`, `Rejected`, and `Superseded`. An RFC
-is immutable after acceptance except for clearly labelled editorial fixes. A
-replacement RFC marks the old one `Superseded` and links both directions.
+A Draft may be withdrawn by its author by recording the author identity, date,
+pull-request or commit URL, and reason in the RFC. Withdrawal does not require a
+decision by the deciding authority. Rejected and Withdrawn RFCs may land as
+historical records but do not change normative files. If five rounds end with
+an unresolved P0/P1, the RFC cannot be accepted; a replacement starts a new RFC
+and a new review budget.
 
-Acceptance means “this repository adopts the documented design.” It does not
-claim that a validator, compiler, runtime, or external implementation exists.
+RFC 0003 is the one-time bootstrap for this process. It follows the same six
+observable steps by explicit decision of `github:uthunderbird`; its rules become
+effective only when its exact bundle lands on `main`. Later process changes are
+decided under the version of this file already effective on `main`.
+
+Acceptance means only that this repository adopts the documented change. It
+does not claim that tooling or an external implementation exists.
